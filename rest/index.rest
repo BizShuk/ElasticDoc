@@ -1,0 +1,29 @@
+
+### Get Indxe List
+GET {{$dotenv Server}}/_cat/indices
+
+
+### Get Indxe, hanging if not exist
+GET {{$dotenv Server}}/{{$dotenv IndexName}}
+
+### Create Index
+PUT {{$dotenv Server}}/{{$dotenv IndexName}}
+
+
+### Check Index,  Exist:200, Not Found:404
+HEAD {{$dotenv Server}}/{{$dotenv IndexName}}
+
+### Get Indxe
+GET {{$dotenv Server}}/{{$dotenv IndexName}} HTTP/1.1
+
+### Delete
+### Be careful to use `_all` and wildcard `*`. `action.destructive_requires_name`  will diable these two
+DELETE {{$dotenv Server}}/{{$dotenv IndexName}}
+
+### Open/Close Index
+
+##### Open Index
+POST {{$dotenv Server}}/{{$dotenv IndexName}}/_open
+
+##### Close Index
+POST {{$dotenv Server}}/{{$dotenv IndexName}}/_close

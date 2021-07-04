@@ -1,0 +1,51 @@
+
+
+### Get Mapping
+GET {{$dotenv Server}}/{{$dotenv IndexName}}/_mapping
+
+
+### Update Mapping
+PUT {{$dotenv Server}}/{{$dotenv IndexName}}/_mapping
+Content-Type: application/json
+
+{
+    "properties": {
+        "text_type" : { "type": "text" },
+        "keyword_type" : { "type": "keyword" },
+        // "level": { "type": "constant_keyword", "value": "debug" },
+        "binary_type" : { "type": "binary" },
+        "boolean_type" : { "type": "boolean" },
+        "date_type" : { "type": "date" },
+        "alias_type" : { "type": "alias", "path": "text_type" },
+        "@timestamp": { "type": "date" },
+        // Number type
+        "long_type" : { "type": "long" }, // unsigned long
+        "integer_type" : { "type": "integer" },
+        "short_type" : { "type": "short" },
+        "byte_type" : { "type": "byte" },
+        "double_type" : { "type": "double" },
+        "float_type" : { "type": "float" }, // scaled_float, half_float,
+        "object_type" : {
+            "properties": {
+                "age":  { "type": "integer" },
+                "name": {
+                    "properties": {
+                        "first": { "type": "text" },
+                        "last":  { "type": "text" }
+                    }
+                }
+            }
+        },
+        "flattened_type" : { "type": "flattened" },
+        "nested_type" : { "type" : "nested" },
+        "join_type" : { "type" : "join" }
+
+
+
+    }
+}
+
+
+### Create field for exisitng mapping
+#https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html#updating-field-mappings
+

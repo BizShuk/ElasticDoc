@@ -1,0 +1,10 @@
+
+
+
+GET {{$dotenv Server}}/_analyze
+Content-Type: application/json
+
+{
+  "analyzer" : "standard",
+  "text" : "this is a test"
+}

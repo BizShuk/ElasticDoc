@@ -1,0 +1,19 @@
+
+
+### Get by document id
+GET {{$dotenv Server}}/{{$dotenv IndexName}}/_doc/KbmYMnkB7cJK5zoTOmJm
+
+### Get all document
+GET {{$dotenv Server}}/{{$dotenv IndexName}}/_search/
+
+### Get last document
+POST {{$dotenv Server}}/{{$dotenv IndexName}}/_search
+Content-Type: application/json
+
+{
+   "size": 1,
+   "sort": { "timestamp": "desc"},
+   "query": {
+      "match_all": {}
+   }
+}

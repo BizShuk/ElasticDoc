@@ -1,0 +1,72 @@
+
+
+
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html
+### Create new document
+POST {{$dotenv Server}}/{{$dotenv IndexName}}/_doc/
+Content-Type: application/json
+
+
+{
+  "test": {
+    "mappings": {
+      "properties": {
+        "binary_type": "1",
+        "boolean_type": "false",
+        "byte_type": "1010101",
+        "date_type": 1420070400001,
+        "double_type": 1420070400001,
+        "flattened_type": {
+            "class": [ "class1", "class2", "class3" ],
+            "teacher": "me"
+        },
+        "float_type": 12.321,
+        "integer_type": 11111,
+        "join_type": {
+          "type": "join",
+          "eager_global_ordinals": true,
+          "relations": {}
+        },
+        "keyword_type": "keywork test",
+        "long_type": "123123123123123123",
+        "nested_type": [
+            { "email" : "e1@chc.com"},
+            { "email" : "e2@chc.com"},
+            { "email" : "e3@chc.com"}
+        ],
+        "object_type": {
+            "age": 30,
+            "name": {
+                "first": "teng",
+                "last": "liiu"
+            }
+        },
+        "short_type": 123,
+        "text_type": "update text"
+      }
+    }
+  }
+}
+
+
+### Update document
+
+# PUT /<target>/_doc/<_id>
+# PUT /<target>/_update/<_id>
+#https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html
+
+
+### Upsert
+# PUT /<target>/_create/<_id>
+# POST /<target>/_create/<_id>
+
+
+### Put data
+# PUT my-index-000001/_doc/1
+# { "date": "2015-01-01" }
+
+# PUT my-index-000001/_doc/2
+# { "date": "2015-01-01T12:10:30Z" }
+
+# PUT my-index-000001/_doc/3
+# { "date": 1420070400001 }

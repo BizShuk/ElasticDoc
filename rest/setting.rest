@@ -1,0 +1,23 @@
+# Settings
+// Updating settings should close the index first. After updated, and then open it up again
+
+
+
+### Get Setting
+GET {{$dotenv Server}}/{{$dotenv IndexName}}/_settings
+Content-Type: application/json
+
+### Update Setting
+PUT {{$dotenv Server}}/{{$dotenv IndexName}}/_settings
+Content-Type: application/json
+
+{
+    "index" : {
+//        "number_of_shards" : 1,
+        "number_of_replicas" : 1
+    }
+}
+
+// "reason": "final test setting [index.number_of_shards], not updateable"
+// => number_of_shards problem
+

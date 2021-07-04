@@ -1,0 +1,22 @@
+Alias_1="test_alias"
+
+
+
+### Get Alias
+GET {{$dotenv Server}}/{{$dotenv IndexName}}/_alias
+// GET {{$dotenv Server}}/{{$dotenv IndexName}}/_alias/<alias name>
+
+
+### Update Alias
+PUT {{$dotenv Server}}/{{$dotenv IndexName}}/_alias/{{Alias_1}}
+Content-Type: application/json
+
+{
+//    "routing" : "kimchy",
+    "filter" : {
+        "term" : {"user" : "kimchy" }
+    }
+
+}
+
+
